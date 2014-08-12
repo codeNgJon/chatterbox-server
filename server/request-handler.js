@@ -17,24 +17,22 @@ exports.handleRequest = function(request, response) {
 
   console.log("Serving request type " + request.method + " for url " + request.url);
 
-  var statusCode;
+  var statusCode = 404;
   var data = "";
 
-  if(request.url === '/classes/messages' || request.url === "/classes/room"){
+  if(request.url === "/classes/messages" || request.url === "/classes/room") {
     if(request.method === 'GET') {
       statusCode = 200;
-    } else if(request.method === 'POST') {
+    } else if(request.method === "POST") {
       statusCode = 201;
-      request.on("data", function(chunk){
+      request.on("data", function(chunk) {
         data += chunk;
       });
-      request.on("end", function(){
+      request.on("end", function() {
         results.push(JSON.parse(data));
         console.log(results);
       });
     }
-  } else {
-    statusCode = 404;
   }
 
 
