@@ -19,9 +19,10 @@ exports.handleRequest = function(request, response) {
 
   var statusCode = 404;
   var data = "";
+  console.log("this is the request url" + request.url);
 
   if(request.url === "/classes/messages" || request.url === "/classes/room") {
-    if(request.method === 'GET') {
+    if(request.method === 'GET' || request.method === 'OPTIONS') {
       statusCode = 200;
     } else if(request.method === "POST") {
       statusCode = 201;
@@ -30,7 +31,6 @@ exports.handleRequest = function(request, response) {
       });
       request.on("end", function() {
         results.push(JSON.parse(data));
-        console.log(results);
       });
     }
   }
