@@ -15,14 +15,12 @@ exports.handleRequest = function(request, response) {
   /* Documentation for both request and response can be found at
    * http://nodemanual.org/0.8.14/nodejs_ref_guide/http.html */
 
-  // console.log(request);
   console.log("Serving request type " + request.method + " for url " + request.url);
 
-  // var statusCode = 200;
   var statusCode;
   var data = "";
 
-  if(request.url === '/classes/messages' || request.url === "/classes/room1"){
+  if(request.url === '/classes/messages' || request.url === "/classes/room"){
     if(request.method === 'GET') {
       statusCode = 200;
     } else if(request.method === 'POST') {
@@ -55,8 +53,6 @@ exports.handleRequest = function(request, response) {
    * up in the browser.*/
 
   response.end(JSON.stringify({results: results}));
-  // response.end("Hella world!");
-
 };
 
 /* These headers will allow Cross-Origin Resource Sharing (CORS).
