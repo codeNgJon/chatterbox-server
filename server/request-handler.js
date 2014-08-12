@@ -19,7 +19,6 @@ exports.handleRequest = function(request, response) {
 
   var statusCode = 404;
   var data = "";
-  console.log("this is the request url" + request.url);
 
   if(request.url === "/classes/messages" || request.url === "/classes/room") {
     if(request.method === 'GET' || request.method === 'OPTIONS') {
@@ -40,7 +39,7 @@ exports.handleRequest = function(request, response) {
    * below about CORS. */
   var headers = exports.defaultCorsHeaders;
 
-  headers['Content-Type'] = "text/plain";
+  headers['Content-Type'] = "application/json";
 
   /* .writeHead() tells our server what HTTP status code to send back */
   response.writeHead(statusCode, headers);

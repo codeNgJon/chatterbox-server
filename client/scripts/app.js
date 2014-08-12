@@ -54,8 +54,7 @@ $(function() {
         type: 'GET',
         contentType: 'application/json',
         success: function(data) {
-          // console.log(data);
-          data = JSON.parse(data);
+          // data = JSON.parse(data);
           console.log('chatterbox: Messages fetched');
 
           // Don't bother if we have nothing to work with
